@@ -22,3 +22,10 @@ async def HottyBin(content):
     response = requests.post(url, data=data)
     link=response.text
     return link
+
+async def PROBin(text):
+    resp = await post(f"{BASE}api/v2/paste", data=text)
+    if not resp["success"]:
+        return
+    link = BASE + resp["message"]
+    return link
